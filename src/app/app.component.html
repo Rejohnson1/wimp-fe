@@ -1,20 +1,114 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    </head>
 
+  <h2>Movie Management</h2>
+  <form class = "form-inline" (ngSubmit)="onSubmitMovie(addnewmovie)" #addnewmovie="ngForm">
+  
+    <div class="form-group">
+      <label for="title" >Title</label>
+      <input type="text" ngModel #title="ngModel" name="title" class="form-control" id="title" placeholder="The Breakfast Club" required>
+    </div>
+
+    <div class="form-group">
+      <label for="budget">Budget</label>
+      <input type="text" ngModel #budget="ngModel" name="budget" class="form-control" id="budget" placeholder="$1,000,000" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="ReleaseDate">Release Date</label>
+      <input type="date" ngModel #releaseDate="ngModel" name="releaseDate"  class="form-control" id="releaseDate" placeholder="01/01/1990" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Distributor">Distributor</label>
+      <input type="text" ngModel #Distributor="ngModel" name="distributor" class="form-control" id="distributor" placeholder="21st Century Fox" required>
+    </div>
+      <button type="submit" class="btn btn-primary">Add Movie</button>
+    <br>
+    <br>
+      <div class="container">
+         <div class="col-sm-offset-2 col-md-9">
+          <div class="panel panel-default">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Movie Title</th>
+                  <th>Release Year</th>
+                  <th>Budget</th>
+                  <th>Distirbutor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let movie of movies">
+                  <th>{{movie.title}}</th>
+                  <th>{{movie.releaseDate}}</th>
+                  <th>{{movie.budget}}</th>
+                  <th>{{movie.distributor}}</th>
+                </tr>
+              </tbody>
+             </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  
+      <h2>Actor Management</h2>
+      <form class = "form-inline" (ngSubmit)="onSubmitActor(addnewactor)" #addnewactor="ngForm">
+ 
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" ngModel #firstName="ngModel" name="firstName" class="form-control" id="firstName" placeholder="Molly" required>
+    </div>
+
+    <div class="form-group">
+      <label for="budget">Last Budget</label>
+      <input type="text" ngModel #lastName="ngModel" name="lastName" class="form-control" id="lastName" placeholder="Ringwald" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="activeSinceYear">Active Since</label>
+      <input type="number" ngModel #activeSinceYear="ngModel" name="activeSinceYear"  class="form-control" id="activeSinceYear" placeholder="1970" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="birthdDate"> Birthday </label>
+      <input type="date" ngModel #birthDate="ngModel" name="birthDate" class="form-control" id="birthDate" placeholder="01/01/1970" required>
+    </div>
+
+      <button type="submit" class="btn btn-primary">Add Actor</button>
+
+      <br>
+      <br>
+<br>
+
+      <div class="container">
+        <div class="col-sm-offset-2 col-sm-9">
+          <div class="panel panel-default">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Years Active</th>
+                  <th>Birthday</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let actor of actors">
+                  <th>{{actor.firstName}}</th>
+                  <th>{{actor.lastName}}</th>
+                  <th>{{actor.activeSinceYear}}</th>
+                  <th>{{actor.birthDate}}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+    
+  
+      </html>
